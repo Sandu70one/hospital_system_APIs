@@ -1,18 +1,22 @@
-import express from 'express';
-import 'dotenv/config';
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
 const app = express();
-const PORT = 3000;
-
-// Import database connection
-import './database/mongoose.js';
+const PORT = 4044;
 
 // Middleware to parse JSON
 app.use(express.json());
+app.use(cors()); // Enable CORS
 
-// Simple route
-app.get('/', (req, res) => {
-  res.send('Hello, Node.js Server!');
-});
+// Import database connection
+import "./database/mongoose.js";
+
+//import routes
+import test from "./Routes/test.js";
+import patient from "./Routes/patient.js";
+
+//app use routes
+app.use("/patient", patient);
 
 // Start the server
 app.listen(PORT, () => {
