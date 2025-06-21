@@ -12,11 +12,11 @@ app.use(cors()); // Enable CORS
 import "./database/mongoose.js";
 
 //import routes
-import test from "./Routes/test.js";
 import patient from "./Routes/patient.js";
-
+import medicalReport from "./Routes/medicalReport.js";
 //app use routes
 app.use("/patient", patient);
+app.use("/medicalReport", medicalReport);
 
 // Start the server
 app.listen(PORT, () => {
